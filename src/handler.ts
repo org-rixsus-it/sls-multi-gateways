@@ -1,3 +1,5 @@
+import type { Color as ChalkColor } from "chalk";
+import concurrently from "concurrently";
 import cors from "cors";
 import express from "express";
 import { readFileSync } from "fs";
@@ -21,9 +23,9 @@ const runServices = (
   services: Service[],
   httpPort: number,
   stage: string,
-  prefixColors: string[]
-) => {
-  const commands = [];
+  prefixColors: (typeof ChalkColor)[]
+): concurrently.CommandObj[] => {
+  const commands: concurrently.CommandObj[] = [];
 
   for (let i = 0; i < services.length; i++) {
     const execCommand = `
