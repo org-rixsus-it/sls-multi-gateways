@@ -30,7 +30,7 @@ const runServices = (
   for (let i = 0; i < services.length; i++) {
     const execCommand = `
             cd  ${process.cwd()}/${services[i].srvSource};
-            sls offline start --stage ${stage} --httpPort ${
+            sls offline start --stage ${stage} --reloadHandler --httpPort ${
       httpPort + i
     } --lambdaPort ${httpPort + i + 1000}
         `;
